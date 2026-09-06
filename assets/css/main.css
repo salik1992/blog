@@ -1,0 +1,111 @@
+/* Replace this file. Custom properties are the visual contract. */
+
+:root {
+  --font-body: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --text: #111;
+  --bg: #fff;
+  --muted: #555;
+  --link: #111;
+  --border: #ccc;
+  --measure: 42rem;
+  --space: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0 auto;
+  padding: var(--space);
+  max-width: var(--measure);
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+}
+
+a[aria-current="page"] {
+  text-decoration: none;
+}
+
+body > header,
+body > footer,
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  align-items: baseline;
+}
+
+body > header {
+  justify-content: space-between;
+  margin-bottom: calc(var(--space) * 2);
+  padding-bottom: var(--space);
+  border-bottom: 1px solid var(--border);
+}
+
+body > footer {
+  margin-top: calc(var(--space) * 2);
+  padding-top: var(--space);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+time,
+body > footer {
+  color: var(--muted);
+}
+
+article header p,
+nav[aria-label="Pagination"],
+nav[aria-label="Post"] {
+  color: var(--muted);
+}
+
+pre,
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+pre {
+  padding: var(--space);
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+:not(pre) > code {
+  padding: 0.1em 0.3em;
+  border: 1px solid var(--border);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  padding-left: 1.2em;
+}
+
+.highlight {
+  overflow: auto;
+}

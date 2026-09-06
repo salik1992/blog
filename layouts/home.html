@@ -1,0 +1,7 @@
+{{ define "main" }}
+  {{ .Content }}
+  {{ $pages := where site.RegularPages "Section" "posts" }}
+  {{ $paginator := .Paginate $pages }}
+  {{ partial "post-list.html" $paginator.Pages }}
+  {{ partial "pagination.html" $paginator }}
+{{ end }}

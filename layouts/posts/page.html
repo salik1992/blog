@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <article>
+    <header>
+      <h1>{{ .Title }}</h1>
+      <p>
+        <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{ if and .Lastmod (gt .Lastmod.Unix .Date.Unix) }}
+          · updated <time datetime="{{ .Lastmod.Format `2006-01-02` }}">{{ .Lastmod.Format "2006-01-02" }}</time>
+        {{ end }}
+      </p>
+    </header>
+    {{ .Content }}
+    {{ partial "terms.html" (dict "page" . "taxonomy" "tags" "label" "Tags") }}
+    {{ partial "terms.html" (dict "page" . "taxonomy" "categories" "label" "Categories") }}
+  </article>
+  {{ if or .PrevInSection .NextInSection }}
+    <nav aria-label="Post">
+      {{ with .NextInSection }}
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      {{ end }}
+      {{ with .PrevInSection }}
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      {{ end }}
+    </nav>
+  {{ end }}
+{{ end }}

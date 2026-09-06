@@ -1,0 +1,10 @@
+<header>
+  <a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+  {{ with site.Menus.main }}
+    <nav aria-label="Main">
+      {{ range . }}
+        <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  {{ end }}
+</header>

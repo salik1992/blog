@@ -1,0 +1,10 @@
+<footer>
+  <p>
+    {{ with site.Copyright }}{{ . }}{{ else }}{{ site.Title }}{{ end }}
+    ·
+    {{ now.Year }}
+    {{ with site.Home.OutputFormats.Get "rss" }}
+      · <a href="{{ .RelPermalink }}">RSS</a>
+    {{ end }}
+  </p>
+</footer>

@@ -1,0 +1,7 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ $paginator := .Paginate .Pages }}
+  {{ partial "post-list.html" $paginator.Pages }}
+  {{ partial "pagination.html" $paginator }}
+{{ end }}

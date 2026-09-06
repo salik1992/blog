@@ -1,0 +1,47 @@
+baseURL = 'https://example.org/'
+title = 'Blog'
+locale = 'en-us'
+copyright = ''
+enableGitInfo = true
+summaryLength = 70
+
+[pagination]
+pagerSize = 10
+
+[params]
+author = 'Vit Salomon'
+description = ''
+
+[taxonomies]
+tag = 'tags'
+category = 'categories'
+
+[outputs]
+home = ['html', 'rss']
+section = ['html', 'rss']
+
+[markup.goldmark.renderer]
+unsafe = false
+
+[markup.highlight]
+noClasses = false
+lineNos = false
+tabWidth = 4
+
+[caches.images]
+dir = ':cacheDir/images'
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = 'About'
+pageRef = '/about'
+weight = 30
