@@ -1,7 +1,7 @@
-baseURL = 'https://example.org/'
-title = 'Blog'
+baseURL = 'https://blog.salomon.cloud/'
+title = 'Vit Salomon Thoughts'
 locale = 'en-us'
-copyright = ''
+copyright = 'Vit Salomon'
 enableGitInfo = true
 summaryLength = 70
 
