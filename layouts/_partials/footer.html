@@ -1,10 +1,13 @@
 <footer>
-  <p>
-    {{ with site.Copyright }}{{ . }}{{ else }}{{ site.Title }}{{ end }}
-    ·
-    {{ now.Year }}
-    {{ with site.Home.OutputFormats.Get "rss" }}
-      · <a href="{{ .RelPermalink }}">RSS</a>
-    {{ end }}
-  </p>
+	<p>
+		<span class="status-app">blog</span>
+		{{ with site.Copyright }}{{ . }}{{ else }}{{ site.Title }}{{ end }}
+		<span aria-hidden="true">·</span>
+		{{ now.Year }}
+		{{ with site.Home.OutputFormats.Get "rss" }}
+			<span aria-hidden="true">·</span>
+			<a href="{{ .RelPermalink }}">RSS</a>
+		{{ end }}
+	</p>
+	<p class="status-path" title="{{ .RelPermalink }}">{{ .RelPermalink }}</p>
 </footer>

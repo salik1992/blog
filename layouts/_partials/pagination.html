@@ -1,11 +1,15 @@
 {{ if gt .TotalPages 1 }}
-  <nav aria-label="Pagination">
-    {{ if .HasPrev }}
-      <a href="{{ .Prev.URL }}">Newer</a>
-    {{ end }}
-    <span>{{ .PageNumber }} / {{ .TotalPages }}</span>
-    {{ if .HasNext }}
-      <a href="{{ .Next.URL }}">Older</a>
-    {{ end }}
-  </nav>
+	<nav aria-label="Pagination" class="pager">
+		{{ if .HasPrev }}
+			<a href="{{ .Prev.URL }}">newer</a>
+		{{ else }}
+			<span aria-hidden="true">newer</span>
+		{{ end }}
+		<span>{{ .PageNumber }}/{{ .TotalPages }}</span>
+		{{ if .HasNext }}
+			<a href="{{ .Next.URL }}">older</a>
+		{{ else }}
+			<span aria-hidden="true">older</span>
+		{{ end }}
+	</nav>
 {{ end }}

@@ -1,111 +1,730 @@
-/* Replace this file. Custom properties are the visual contract. */
+/* Tokyo Night (night) — TUI chrome. Font is the reader's monospace. */
 
 :root {
-  --font-body: system-ui, sans-serif;
-  --font-mono: ui-monospace, monospace;
-  --text: #111;
-  --bg: #fff;
-  --muted: #555;
-  --link: #111;
-  --border: #ccc;
-  --measure: 42rem;
-  --space: 1rem;
+	--bg-dark: #16161e;
+	--bg: #1a1b26;
+	--bg-surface: #24283b;
+	--bg-highlight: #292e42;
+	--bg-select: #283457;
+	--black: #414868;
+	--comment: #565f89;
+	--fg-dark: #9aa5ce;
+	--fg: #a9b1d6;
+	--fg-bright: #c0caf5;
+
+	--red: #f7768e;
+	--orange: #ff9e64;
+	--yellow: #e0af68;
+	--green: #9ece6a;
+	--teal: #73daca;
+	--cyan: #7dcfff;
+	--blue: #7aa2f7;
+	--blue-dark: #3d59a1;
+	--magenta: #bb9af7;
+	--purple: #9d7cd8;
+
+	--bright-red: #ff7a93;
+	--bright-green: #b9f27c;
+	--bright-yellow: #ff9e64;
+	--bright-blue: #7da6ff;
+	--bright-magenta: #bb9af7;
+	--bright-cyan: #0db9d7;
+	--bright-white: #c0caf5;
+
+	--font: ui-monospace, monospace;
+	--measure: 120ch;
+	--space: 1rem;
+	--pad: 1.5ch;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  font-size: 100%;
+	font-size: 100%;
+	background: var(--bg-dark);
+	color-scheme: dark;
 }
 
 body {
-  margin: 0 auto;
-  padding: var(--space);
-  max-width: var(--measure);
-  color: var(--text);
-  background: var(--bg);
-  font-family: var(--font-body);
-  line-height: 1.5;
+	margin: 0;
+	padding: var(--space);
+	color: var(--fg);
+	background: var(--bg-dark);
+	font-family: var(--font);
+	line-height: 1.5;
+	tab-size: 4;
 }
 
-a {
-  color: var(--link);
+.tui {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - var(--space) * 2);
+	max-width: var(--measure);
+	margin: 0 auto;
+	background: var(--bg);
+	border: 1px solid var(--blue);
 }
 
-a[aria-current="page"] {
-  text-decoration: none;
+.tui > header,
+.tui > footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1ch var(--space);
+	align-items: baseline;
+	padding: 0.35rem var(--pad);
+	background: var(--bg-surface);
 }
 
-body > header,
-body > footer,
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space);
-  align-items: baseline;
+.tui > header {
+	justify-content: space-between;
+	border-bottom: 1px solid var(--blue);
 }
 
-body > header {
-  justify-content: space-between;
-  margin-bottom: calc(var(--space) * 2);
-  padding-bottom: var(--space);
-  border-bottom: 1px solid var(--border);
+.tui > footer {
+	justify-content: space-between;
+	margin-top: auto;
+	border-top: 1px solid var(--blue);
+	color: var(--comment);
+	font-size: 0.9em;
 }
 
-body > footer {
-  margin-top: calc(var(--space) * 2);
-  padding-top: var(--space);
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+.tui > header p,
+.tui > footer p {
+	margin: 0;
+}
+
+.tui > main {
+	flex: 1 1 auto;
+	padding: calc(var(--space) * 1.25) var(--pad) var(--space);
+}
+
+.brand {
+	margin: 0;
+	font-weight: 700;
+	color: var(--bright-cyan);
+}
+
+.brand a,
+.brand a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+.brand a:hover {
+	color: var(--bright-white);
+}
+
+nav[aria-label="Main"] {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5ch;
+}
+
+nav[aria-label="Main"] a {
+	color: var(--fg);
+	text-decoration: none;
+	padding: 0 0.5ch;
+}
+
+nav[aria-label="Main"] a::before {
+	content: "[";
+	color: var(--comment);
+}
+
+nav[aria-label="Main"] a::after {
+	content: "]";
+	color: var(--comment);
+}
+
+nav[aria-label="Main"] a:hover {
+	color: var(--bright-cyan);
+}
+
+nav[aria-label="Main"] a[aria-current="page"] {
+	color: var(--bg);
+	background: var(--bright-blue);
+}
+
+nav[aria-label="Main"] a[aria-current="page"]::before,
+nav[aria-label="Main"] a[aria-current="page"]::after {
+	color: var(--bg);
+}
+
+.status-app {
+	display: inline-block;
+	margin-right: 1ch;
+	padding: 0 0.6ch;
+	background: var(--bright-magenta);
+	color: var(--bg);
+	font-weight: 700;
+}
+
+.status-path {
+	margin: 0;
+	color: var(--blue);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+}
+
+.tui > footer a {
+	color: var(--cyan);
 }
 
 h1,
 h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.25;
+	font-weight: 700;
+	text-wrap: balance;
+}
+
+h1 {
+	color: var(--bright-cyan);
+	font-size: 1.5rem;
+	margin: 0 0 0.75rem;
+}
+
+h2 {
+	color: var(--bright-magenta);
+	font-size: 1.2rem;
+	margin: 1.5rem 0 0.6rem;
+}
+
 h3 {
-  line-height: 1.2;
+	color: var(--bright-green);
+	font-size: 1.05rem;
+	margin: 1.25rem 0 0.5rem;
 }
 
+h4 {
+	color: var(--bright-yellow);
+	font-size: 1rem;
+	margin: 1.1rem 0 0.4rem;
+}
+
+h5 {
+	color: var(--bright-blue);
+	font-size: 1rem;
+	margin: 1rem 0 0.4rem;
+}
+
+h6 {
+	color: var(--bright-red);
+	font-size: 1rem;
+	margin: 1rem 0 0.4rem;
+}
+
+p,
+ul,
+ol,
+dl,
+pre,
+blockquote,
+table,
+figure {
+	margin: 0 0 1rem;
+}
+
+a {
+	color: var(--blue);
+}
+
+a:hover {
+	color: var(--cyan);
+}
+
+a:visited {
+	color: var(--magenta);
+}
+
+nav[aria-label="Main"] a:visited {
+	color: var(--fg);
+}
+
+nav[aria-label="Main"] a:visited:hover {
+	color: var(--bright-cyan);
+}
+
+nav[aria-label="Main"] a[aria-current="page"]:visited {
+	color: var(--bg);
+}
+
+article header {
+	margin-bottom: 1.25rem;
+	padding-bottom: 0.75rem;
+	border-bottom: 1px dashed var(--black);
+}
+
+article header h1 {
+	margin-bottom: 0.4rem;
+}
+
+.meta,
 time,
-body > footer {
-  color: var(--muted);
+.tui > footer {
+	color: var(--comment);
 }
 
-article header p,
-nav[aria-label="Pagination"],
-nav[aria-label="Post"] {
-  color: var(--muted);
+.meta time {
+	color: var(--yellow);
+}
+
+.year-group h2 {
+	margin-top: 0.5rem;
+	color: var(--bright-yellow);
+}
+
+.post-list,
+.term-index,
+.terms ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1.25rem;
+}
+
+.post-list li {
+	display: grid;
+	grid-template-columns: 12ch 1fr;
+	gap: 1ch;
+	padding: 0.1rem 0.5ch;
+}
+
+.post-list li:hover,
+.term-index li:hover {
+	background: var(--bg-highlight);
+}
+
+.post-list time {
+	color: var(--comment);
+}
+
+.post-list a {
+	color: var(--fg-bright);
+	text-decoration: none;
+}
+
+.post-list a:hover {
+	color: var(--bright-cyan);
+}
+
+.term-index li {
+	display: flex;
+	gap: 1ch;
+	padding: 0.1rem 0.5ch;
+}
+
+.term-index a {
+	color: var(--fg-bright);
+	text-decoration: none;
+}
+
+.term-index a::before {
+	content: "#";
+	color: var(--magenta);
+}
+
+.term-index .count {
+	color: var(--comment);
+}
+
+.term-index .count::before {
+	content: "(";
+}
+
+.term-index .count::after {
+	content: ")";
+}
+
+.terms h2 {
+	font-size: 1rem;
+	color: var(--bright-blue);
+}
+
+.terms ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5ch;
+}
+
+.terms a {
+	display: inline-block;
+	padding: 0 0.6ch;
+	color: var(--cyan);
+	text-decoration: none;
+	border: 1px solid var(--blue-dark);
+}
+
+.terms a:hover {
+	border-color: var(--cyan);
+	background: var(--bg-highlight);
+}
+
+.pager,
+.post-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1ch;
+	align-items: baseline;
+	margin-top: 1.5rem;
+	padding-top: 0.75rem;
+	border-top: 1px dashed var(--black);
+	color: var(--comment);
+}
+
+.pager a,
+.post-nav a {
+	text-decoration: none;
+}
+
+.pager a::before,
+.post-nav a[rel="next"]::before {
+	content: "[ ";
+	color: var(--comment);
+}
+
+.pager a::after,
+.post-nav a[rel="prev"]::after {
+	content: " ]";
+	color: var(--comment);
+}
+
+.pager span[aria-hidden="true"] {
+	opacity: 0.4;
+}
+
+.pager span[aria-hidden="true"]::before {
+	content: "[ ";
+}
+
+.pager span[aria-hidden="true"]::after {
+	content: " ]";
+}
+
+.post-nav a[rel="next"]::after {
+	content: " → ]";
+	color: var(--comment);
+}
+
+.post-nav a[rel="prev"]::before {
+	content: "[ ← ";
+	color: var(--comment);
+}
+
+ul {
+	padding-left: 2ch;
+	list-style-type: "▸ ";
+}
+
+ol {
+	padding-left: 3ch;
+}
+
+li::marker {
+	color: var(--blue);
+}
+
+blockquote {
+	margin-left: 0;
+	padding: 0.25rem 0 0.25rem 1.5ch;
+	border-left: 2px solid var(--magenta);
+	color: var(--fg-dark);
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	margin: 1.5rem 0;
+	background: repeating-linear-gradient(
+		to right,
+		var(--black) 0 0.6ch,
+		transparent 0.6ch 1.2ch
+	);
 }
 
 pre,
 code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-}
-
-pre {
-  padding: var(--space);
-  overflow: auto;
-  border: 1px solid var(--border);
+	font-family: var(--font);
+	font-size: 0.95em;
 }
 
 :not(pre) > code {
-  padding: 0.1em 0.3em;
-  border: 1px solid var(--border);
+	color: var(--orange);
+	background: var(--bg-highlight);
+	padding: 0 0.5ch;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-ul {
-  padding-left: 1.2em;
-}
-
+pre,
 .highlight {
-  overflow: auto;
+	padding: 0.75rem var(--pad);
+	overflow: auto;
+	background: var(--bg-dark);
+	border: 1px solid var(--blue-dark);
+}
+
+.highlight pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+
+img,
+video,
+svg {
+	max-width: 100%;
+	height: auto;
+}
+
+figure img {
+	border: 1px solid var(--black);
+}
+
+figcaption {
+	margin-top: 0.4rem;
+	color: var(--comment);
+	font-size: 0.9em;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95em;
+}
+
+th,
+td {
+	padding: 0.25rem 1ch;
+	text-align: left;
+	border: 1px solid var(--black);
+}
+
+th {
+	color: var(--bright-cyan);
+	background: var(--bg-surface);
+}
+
+tr:hover td {
+	background: var(--bg-highlight);
+}
+
+strong {
+	color: var(--fg-bright);
+	font-weight: 700;
+}
+
+em {
+	font-style: italic;
+	color: var(--fg-dark);
+}
+
+mark {
+	color: var(--bg);
+	background: var(--yellow);
+}
+
+kbd {
+	padding: 0 0.4ch;
+	color: var(--fg-bright);
+	border: 1px solid var(--black);
+	background: var(--bg-surface);
+}
+
+::selection {
+	color: var(--fg-bright);
+	background: var(--bg-select);
+}
+
+:focus-visible {
+	outline: 1px solid var(--cyan);
+	outline-offset: 2px;
+}
+
+@media (max-width: 40rem) {
+	body {
+		padding: 0;
+	}
+
+	.tui {
+		min-height: 100vh;
+		border-left: 0;
+		border-right: 0;
+	}
+
+	.tui > footer {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.2rem;
+	}
+
+	.post-list li {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+}
+
+/* Hugo chroma — Tokyo Night Night */
+.chroma {
+	color: var(--fg-bright);
+	background: transparent;
+}
+
+.chroma .err {
+	color: var(--red);
+}
+
+.chroma .lntd {
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.chroma .lntable {
+	border-spacing: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	width: auto;
+}
+
+.chroma .hl {
+	background-color: var(--black);
+}
+
+.chroma .lnt,
+.chroma .ln {
+	white-space: pre;
+	user-select: none;
+	margin-right: 1ch;
+	padding: 0 1ch 0 0;
+	color: var(--comment);
+}
+
+.chroma .k,
+.chroma .kp,
+.chroma .kr,
+.chroma .nt {
+	color: var(--magenta);
+}
+
+.chroma .kc,
+.chroma .ne,
+.chroma .nn,
+.chroma .py,
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .il,
+.chroma .mo {
+	color: var(--yellow);
+}
+
+.chroma .kd {
+	color: var(--purple);
+}
+
+.chroma .kn,
+.chroma .ni,
+.chroma .sr {
+	color: var(--cyan);
+}
+
+.chroma .kt {
+	color: var(--teal);
+}
+
+.chroma .na,
+.chroma .nd,
+.chroma .nf,
+.chroma .fm,
+.chroma .dl,
+.chroma .se {
+	color: var(--blue);
+}
+
+.chroma .nc,
+.chroma .no {
+	color: var(--orange);
+}
+
+.chroma .nl,
+.chroma .nb,
+.chroma .bp,
+.chroma .s,
+.chroma .sb,
+.chroma .sc,
+.chroma .s2,
+.chroma .si,
+.chroma .sx,
+.chroma .s1,
+.chroma .ss,
+.chroma .o,
+.chroma .ow,
+.chroma .or {
+	color: var(--green);
+}
+
+.chroma .nx,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
+.chroma .vm,
+.chroma .ld,
+.chroma .go,
+.chroma .gp,
+.chroma .x,
+.chroma .cl {
+	color: var(--fg-bright);
+}
+
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs,
+.chroma .cp,
+.chroma .cpf,
+.chroma .sd,
+.chroma .sh {
+	color: var(--comment);
+	font-style: italic;
+}
+
+.chroma .gd,
+.chroma .gr,
+.chroma .gt {
+	color: var(--red);
+}
+
+.chroma .gi {
+	color: var(--green);
+}
+
+.chroma .gh,
+.chroma .gu {
+	color: var(--yellow);
+	font-weight: 700;
+}
+
+.chroma .ge {
+	font-style: italic;
+}
+
+.chroma .gs {
+	font-weight: 700;
+}
+
+.chroma .gl {
+	text-decoration: underline;
 }
