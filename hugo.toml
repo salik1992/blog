@@ -1,5 +1,5 @@
 baseURL = 'https://blog.salomon.cloud/'
-title = 'Vit Salomon Thoughts'
+title = "Vit Salomon's Thoughts"
 locale = 'en-us'
 copyright = 'Vit Salomon'
 enableGitInfo = true
