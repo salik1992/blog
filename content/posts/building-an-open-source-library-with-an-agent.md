@@ -1,7 +1,7 @@
 ---
 title: 'Building an Open Source Library With an Agent'
 date: '2026-09-06T15:31:08+02:00'
-tags: [TSP]
+tags: [TSP, developing with Grok]
 categories: []
 ---
 
