@@ -294,8 +294,9 @@ time,
 .post-list li {
 	display: grid;
 	grid-template-columns: 12ch 1fr;
-	gap: 1ch;
-	padding: 0.1rem 0.5ch;
+	gap: 0.25rem 1ch;
+	align-items: start;
+	padding: 0.5rem 0.5ch;
 }
 
 .post-list li:hover,
@@ -307,13 +308,38 @@ time,
 	color: var(--comment);
 }
 
+.post-list-body {
+	position: relative;
+	min-width: 0;
+	cursor: pointer;
+}
+
 .post-list a {
 	color: var(--fg-bright);
 	text-decoration: none;
 }
 
-.post-list a:hover {
+.post-list a:hover,
+.post-list-body:hover a {
 	color: var(--bright-cyan);
+}
+
+.post-list-body a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.post-preview {
+	margin: 0.2rem 0 0;
+	color: var(--fg-dark);
+	font-size: 0.9em;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .term-index li {
