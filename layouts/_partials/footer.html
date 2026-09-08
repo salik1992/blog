@@ -8,6 +8,10 @@
 			<span aria-hidden="true">·</span>
 			<a href="{{ .RelPermalink }}">RSS</a>
 		{{ end }}
+		{{ with site.Params.social.x }}
+			<span aria-hidden="true">·</span>
+			<a href="https://x.com/{{ . }}" rel="me">@{{ . }}</a>
+		{{ end }}
 	</p>
 	<p class="status-path" title="{{ .RelPermalink }}">{{ .RelPermalink }}</p>
 </footer>

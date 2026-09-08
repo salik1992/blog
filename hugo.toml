@@ -12,6 +12,9 @@ pagerSize = 10
 author = 'Vit Salomon'
 description = ''
 
+[params.social]
+x = 'VitSalomon'
+
 [taxonomies]
 tag = 'tags'
 category = 'categories'
